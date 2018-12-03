@@ -1,0 +1,25 @@
+{
+  "name": "tracer",
+  "version": "0.1.0",
+  "description": "Record, Transform and Vizualise traces/sequences",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hugodecasta/Tracer.git"
+  },
+  "keywords": [
+    "Trace",
+    "Sequence",
+    "Analytic",
+    "DataViz"
+  ],
+  "author": "Hugo Castaneda",
+  "license": "UNLICENCED",
+  "bugs": {
+    "url": "https://github.com/hugodecasta/Tracer/issues"
+  },
+  "homepage": "https://github.com/hugodecasta/Tracer#readme"
+}
