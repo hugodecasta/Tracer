@@ -7,6 +7,7 @@
 'use strict'
 
 const colors = require('colors')
+const engine = require('./trace-engine.js')
 
 // ---------------------------------------------------------------
 // ----------------------------------- TESTS DATA INTERNAL -------
@@ -14,62 +15,70 @@ const colors = require('colors')
 var testMap = {}
 
 async function beforeMethod() {
+  await engine.clearAllTraces()
 }
 
 async function afterMethod() {
+  await engine.clearAllTraces()
 }
 
 // -------------------------------------------------------------------------------
 // -------------------------------------- TESTS DEFINITION -----------------------
 
 // ----------------------------------------
-testMap['Tester'] = {}
-testMap['Tester']['method 1'] = function() {
-  return new Promise((ok,rej) => {
-    setTimeout(function() {
-      ok(true)
-    },Math.random()*500)
-  })
-}
-testMap['Tester']['method 2'] = function() {
-  return new Promise((ok,rej) => {
-    setTimeout(function() {
-      rej('Y a une erreur')
-    },Math.random()*500)
-  })
-}
-testMap['Tester']['method 2.2'] = function() {
-  return false
+testMap['ENGINE'] = {}
+
+testMap['ENGINE']['trace exists'] = async function() {
+
+  await engine.clearAllTraces()
+
+  return ! await engine.traceExists('myTrace1')
 }
 
-// ----------------------------------------
-testMap['Tester2'] = {}
-testMap['Tester2']['method 3'] = function() {
-  return new Promise((ok,rej) => {
-    setTimeout(function() {
-      ok(true)
-    },Math.random()*2000)
-  })
-}
-testMap['Tester2']['method 4'] = function() {
+testMap['ENGINE']['create trace'] = async function() {
 
-  throw 'Error zeofhreigfiezhforuite'
-  return true
+  await engine.clearAllTraces()
+  let passed = true
 
-}
-testMap['Tester2']['method 5'] = function() {
+  passed &= ! await engine.traceExists('myTrace1')
+  passed &= await engine.createTrace('myTrace1')
+  passed &= await engine.traceExists('myTrace1')
 
-  return true
-
-}
-testMap['Tester2']['method 4'] = function() {
-
-  let a = 5
-  a += b
-  return true
-
+  return passed
 }
 
+testMap['ENGINE']['delete trace'] = async function() {
+
+  await engine.clearAllTraces()
+  let passed = true
+
+  passed &= ! await engine.traceExists('myTrace1')
+  passed &= await engine.createTrace('myTrace1')
+  passed &= await engine.traceExists('myTrace1')
+  passed &= await engine.deleteTrace('myTrace1')
+  passed &= ! await engine.traceExists('myTrace1')
+
+  return passed
+}
+
+testMap['ENGINE']['add obsels'] = async function() {
+
+  await engine.clearAllTraces()
+  let passed = true
+
+  await engine.createTrace('myTrace1')
+
+  passed &= (await engine.getTraceObsels('myTrace1')).length == 0
+
+  await engine.addObsel('myTrace1',{'name':'im an obsel 1'})
+  passed &= (await engine.getTraceObsels('myTrace1')).length == 1
+
+  await engine.addObsel('myTrace1',{'name':'im an obsel 2'})
+  passed &= (await engine.getTraceObsels('myTrace1')).length == 2
+  passed &= (await engine.getTraceObsels('myTrace1'))[1].name == 'im an obsel 2'
+
+  return passed
+}
 
 // -------------------------------------------------------------------------------
 // ---------------------------------------------------------------

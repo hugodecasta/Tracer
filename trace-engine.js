@@ -66,12 +66,20 @@ exports.deleteTrace = async function(traceName) {
   return true
 }
 
+exports.clearAllTraces = async function() {
+  let traces = await retrieveAllTraceName()
+  for(let trace of traces)
+    await deleteTrace(trace)
+  return true
+}
+
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------- INTERNAL -------
 
 // --------------------------------
 async function traceExists(traceName) {
-  return await fs.exists(traceInfoFile(traceName))
+  let infoFile = await traceInfoFile(traceName)
+  return await fs.exists(infoFile)
 }
 
 // --------------------------------
@@ -125,20 +133,36 @@ async function retrieveObsels(traceName) {
 
 async function saveObsels(traceName, obsels) {
   let obselFile = await traceObselFile(traceName)
-  await fs.writeFile(obselFile, JSON.stringify(obselObject))
+  await fs.writeFile(obselFile, JSON.stringify(obsels))
 }
 
 // --------------------------------
+async function retrieveAllTraceName() {
+  let dir = await traceDirectory()
+  let allFiles = await fs.readdir(dir)
+  let traces = []
+  for(let file of allFiles) {
+    if(file.indexOf('_infos.json')>-1) {
+      let trueName = file.replace('_infos.json','')
+      traces.push(trueName)
+    }
+  }
+  return traces
+}
+
 async function traceInfoFile(traceName) {
-  return traceDirectory() + traceName + '.json'
+  return (await traceDirectory()) + traceName + '_infos.json'
 }
 
 async function traceObselFile(traceName) {
-  return traceDirectory() + traceName + '_obsels.json'
+  return (await traceDirectory()) + traceName + '_obsels.json'
 }
 
 async function traceDirectory() {
-  return './traces/'
+  let dir = './traces/'
+  if(! await fs.exists(dir))
+    await fs.mkdir(dir)
+  return dir
 }
 
 // ----------------------------------------------------- UTILS
