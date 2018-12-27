@@ -6,11 +6,11 @@ Record, Transform and Vizualise traces / sequences
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
 ![Bugs](https://img.shields.io/badge/bug_report-0-brightgreen.svg)
 
-## dependance information
-comming later ...
-
-## execution information
-comming later ...
+## structure information
+This repository gives access to multiple implementation of the Tracer paradigm
 
 ## examples
 comming later ...
+
+## License (MIT)
+Tracer is licenced under the [MIT Licence](LICENSE.md)
