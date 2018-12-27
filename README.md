@@ -1,5 +1,5 @@
-# Tracer
-Tracer is a server side implementation of the sequence manipuation paradigm. It allows to record, transform and access sequence data.
+# Project Name
+Project description
 
 ## versioning infos
 ![Build](https://img.shields.io/badge/build-alpha-yellowgreen.svg)
@@ -7,22 +7,13 @@ Tracer is a server side implementation of the sequence manipuation paradigm. It 
 ![Bugs](https://img.shields.io/badge/bug_report-0-brightgreen.svg)
 
 ## dependency information
-
-  * project dependency:
-    comming later ...
-
-  * development dependency:
-    * colors v1.3.2
+comming later ...
 
 ## execution information
 comming later ...
-
-### tests
-
-  * Launch tests: `npm test [test_name_to_launch_filter...]`
 
 ## examples
 comming later ...
 
 ## License (MIT)
-Tracer is licenced under the [MIT Licence](LICENSE.md)
+"""PROJECT NAME""" is licenced under the [MIT Licence](LICENSE.md)

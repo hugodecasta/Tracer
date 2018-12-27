@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "description": "Project description",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "fs-promise": "^2.0.3"
+  },
   "devDependencies": {
     "color": "^3.1.0",
     "colors": "^1.3.2"
