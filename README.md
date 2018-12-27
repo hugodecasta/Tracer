@@ -6,6 +6,8 @@ Tracer is a server side implementation of the sequence manipuation paradigm. It 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
 ![Bugs](https://img.shields.io/badge/bug_report-0-brightgreen.svg)
 
+  * [v0.1.0](https://github.com/hugodecasta/Tracer/releases/tag/v0.1.0) - "Tracer - alpha 0.1.0 - Trace engine to manage trace files"
+
 ## dependency information
 
   * project dependency:
