@@ -1,23 +1,28 @@
 {
   "name": "tracer",
   "version": "0.1.0",
-  "description": "Record, Transform and Vizualise traces/sequences",
+  "description": "Project description",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {},
+  "devDependencies": {
+    "color": "^3.1.0",
+    "colors": "^1.3.2"
   },
+  "scripts": {
+    "test": "node module_tester.js"
+  },
+  "author": "Hugo Castaneda",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hugodecasta/Tracer.git"
   },
   "keywords": [
-    "Trace",
-    "Sequence",
-    "Analytic",
-    "DataViz"
+    "sequence",
+    "trace",
+    "recording",
+    "transform"
   ],
-  "author": "Hugo Castaneda",
-  "license": "UNLICENCED",
   "bugs": {
     "url": "https://github.com/hugodecasta/Tracer/issues"
   },
